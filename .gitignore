@@ -1,0 +1,4 @@
+.vscode
+dashboard/node_modules
+publish/node_modules
+subscribe/node_modules

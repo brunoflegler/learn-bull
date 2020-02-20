@@ -1,0 +1,16 @@
+{
+  "name": "publish",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pm2-runtime start index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bull": "^3.13.0",
+    "dotenv": "^8.2.0"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "subscribe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pm2-runtime start index.js -i 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "bull": "^3.13.0",
+    "dotenv": "^8.2.0"
+  }
+}

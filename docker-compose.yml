@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  dashboard:
+    container_name: dashboard
+    build: ./dashboard/
+    image: bruno.flegler/dashboard
+    ports:
+      - "3000:8080"
+    depends_on:
+      - redis
+    command: ["./wait-for-it.sh", "redis:6379", "--", "npm", "run", "dev"]
+    links:
+      - redis
+
+  subscribe:
+    container_name: subscribe
+    build: ./subscribe/
+    image: bruno.flegler/subscribe
+    depends_on:
+      - redis
+    command: ["./wait-for-it.sh", "redis:6379", "--", "npm", "run", "dev"]
+    links:
+      - redis
+
+  publish:
+    container_name: publish
+    build: ./subscribe/
+    image: bruno.flegler/publish
+    depends_on:
+      - redis
+    command: ["./wait-for-it.sh", "redis:6379", "--", "npm", "run", "dev"]
+    links:
+      - redis
+
+  redis:
+    container_name: redis
+    image: "redis:alpine"
+    ports:
+      - "6380:6379"
+    volumes:
+      - ../data/redis:/data
+    entrypoint: redis-server --appendonly yes
+    restart: unless-stopped
+
+
