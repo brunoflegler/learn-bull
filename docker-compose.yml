@@ -25,7 +25,7 @@ services:
 
   publish:
     container_name: publish
-    build: ./subscribe/
+    build: ./publish/
     image: bruno.flegler/publish
     depends_on:
       - redis
